@@ -6,19 +6,11 @@ document.addEventListener('DOMContentLoaded', event => {
     let sendingForm = false;
 
     cf7Form.addEventListener('submit', function(e) {
-      if (sendingForm) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
-    });
-
-    cf7.addEventListener('wpcf7beforesubmit', function(e) {
-      sendingForm = true;
+      jQuery(cf7Form).find('.wpcf7-submit').attr('disabled', true);
     });
 
     cf7.addEventListener('wpcf7submit', function(e) {
-      sendingForm = false;
+      jQuery(cf7Form).find('.wpcf7-submit').attr('disabled', false);
     });
   });
 });
